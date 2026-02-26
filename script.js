@@ -59,6 +59,32 @@ function createStars() {
     }
 }
 
+// الرجوع للرئيسية من صفحة الأسئلة
+function goBackToHome() {
+    const confirmed = confirm("هل تريد الرجوع للصفحة الرئيسية؟ سيتم إلغاء اللعبة الحالية.");
+    if (confirmed) {
+        clearInterval(timerInterval);
+        players = [];
+        currentQuestionIndex = 0;
+        difficulty = '';
+        shuffledQuestions = [];
+        document.getElementById('playerInput').value = '';
+        document.getElementById('playersList').innerHTML = '';
+        document.getElementById('continueBtn').style.display = 'none';
+        showScreen('homeScreen');
+    }
+}
+
+function setTheme(theme) {
+    document.querySelectorAll('.theme-pill')
+        .forEach(b => b.classList.remove('active'));
+
+    document.querySelector(`[data-theme="${theme}"]`)
+        ?.classList.add('active');
+
+    document.body.setAttribute('data-theme', theme);
+}
+
 // الانتقال للشاشات
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
