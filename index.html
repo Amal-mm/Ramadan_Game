@@ -11,6 +11,15 @@
     <div class="stars" id="stars"></div>
     <div class="islamic-pattern"></div>
 
+   <!-- Theme Switcher Floating Top -->
+<div class="theme-float">
+    
+   <button class="theme-pill" data-theme="rose" onclick="setTheme('rose')">🌸 
+</button>
+    <button class="theme-pill" data-theme="ramadan" onclick="setTheme('ramadan')">🌙 
+</button>
+</div>
+
     <div class="container">
         <!-- الشاشة الرئيسية -->
         <div class="screen active" id="homeScreen">
@@ -59,6 +68,10 @@
         <!-- شاشة الأسئلة -->
         <div class="screen" id="questionScreen">
             <div class="card">
+                <button class="btn-back" onclick="goBackToHome()" title="العودة للرئيسية">
+                    <span class="btn-back-icon">🏠</span>
+                    <span class="btn-back-text">الرئيسية</span>
+                </button>
                 <div class="question-counter" id="questionCounter"></div>
                 <div class="question-box">
                     <div class="question-text" id="questionText"></div>
