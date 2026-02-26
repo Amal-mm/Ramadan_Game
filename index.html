@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> جاوب أسرع </title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="islamic-pattern"></div>
+
+    <div class="container">
+        <!-- الشاشة الرئيسية -->
+        <div class="screen active" id="homeScreen">
+            <div class="card">
+                <div class="moon"></div>
+                <h1>تحدي رمضان</h1>
+                <p class="subtitle">اختبر معلوماتك الدينية في أجواء رمضانية </p>
+                <button class="btn btn-primary" onclick="goToPlayers()">🌙 ابدأ اللعبة</button>
+            </div>
+        </div>
+
+        <!-- شاشة إدخال الأسماء -->
+        <div class="screen" id="playersScreen">
+            <div class="card">
+                <h2>أسماء اللاعبين</h2>
+                <div class="input-group">
+                    <label>أدخل اسم اللاعب</label>
+                    <input type="text" id="playerInput" placeholder="اكتب الاسم هنا..." onkeypress="if(event.key==='Enter') addPlayer()">
+                </div>
+                <button class="btn btn-secondary" onclick="addPlayer()">إضافة لاعب</button>
+                <div class="players-list" id="playersList"></div>
+                <button class="btn btn-primary" onclick="goToDifficulty()" id="continueBtn" style="display: none;">متابعة</button>
+            </div>
+        </div>
+
+        <!-- شاشة اختيار المستوى -->
+        <div class="screen" id="difficultyScreen">
+            <div class="card">
+                <h2>اختر مستوى الصعوبة</h2>
+                <div class="difficulty-options">
+                    <button class="difficulty-btn" onclick="selectDifficulty('easy')">
+                        😊<br>سهل
+                    </button>
+                    <button class="difficulty-btn" onclick="selectDifficulty('medium')">
+                        🤔<br>متوسط
+                    </button>
+                    <button class="difficulty-btn" onclick="selectDifficulty('hard')">
+                        🔥<br>صعب
+                    </button>
+                </div>
+                <button class="btn btn-primary" onclick="startGame()" id="startGameBtn" style="display: none;">ابدأ الأسئلة</button>
+                <button class="btn btn-secondary" onclick="goBackToPlayers()">رجوع لإضافة لاعبين</button>
+            </div>
+        </div>
+
+        <!-- شاشة الأسئلة -->
+        <div class="screen" id="questionScreen">
+            <div class="card">
+                <div class="question-counter" id="questionCounter"></div>
+                <div class="question-box">
+                    <div class="question-text" id="questionText"></div>
+                    
+                    <div class="timer-container">
+                        <svg class="timer-circle" viewBox="0 0 200 200">
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#f7c548;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="timer-bg" cx="100" cy="100" r="90"></circle>
+                            <circle class="timer-progress" cx="100" cy="100" r="90" 
+                                    stroke-dasharray="565.48" 
+                                    stroke-dashoffset="0"
+                                    id="timerCircle"></circle>
+                        </svg>
+                        <div class="timer-text" id="timerText">40</div>
+                    </div>
+
+                    <div class="answer-box" id="answerBox">
+                        <div class="answer-text" id="answerText"></div>
+                    </div>
+                </div>
+
+                <div class="player-selection" id="playerSelection" style="display: none;">
+                    <h3 style="text-align: center; color: var(--secondary); margin-bottom: 15px;">من أجاب أولاً؟</h3>
+                    <div class="player-grid" id="playerGrid"></div>
+                </div>
+
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" style="display: none;">السؤال التالي</button>
+            </div>
+        </div>
+
+        <!-- شاشة النتائج -->
+        <div class="screen" id="resultsScreen">
+            <div class="card">
+                <div class="winner-animation">
+                    <div class="winner-crown">👑</div>
+                    <h2>الفائز</h2>
+                    <div class="winner-name" id="winnerName"></div>
+                    <p class="subtitle" id="winnerScore"></p>
+                </div>
+
+                <div class="scoreboard">
+                    <h3 style="text-align: center; color: var(--secondary); margin-bottom: 20px;">لوحة النتائج</h3>
+                    <div id="finalScores"></div>
+                </div>
+
+                <button class="btn btn-primary" onclick="restartGame()">العب مرة أخرى</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<footer class="footer">
+     2026 HOPE ©
+</footer>
+</html>
