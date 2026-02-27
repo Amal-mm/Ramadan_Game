@@ -175,7 +175,7 @@ function displayQuestion() {
 
 // المؤقت
 function startTimer() {
-    timeLeft = 40;
+    timeLeft = 20;
     const circle = document.getElementById('timerCircle');
     const timerText = document.getElementById('timerText');
     const circumference = 2 * Math.PI * 90;
@@ -188,7 +188,7 @@ function startTimer() {
         timeLeft--;
         timerText.textContent = timeLeft;
         
-        const offset = circumference - (timeLeft / 40) * circumference;
+        const offset = circumference - (timeLeft / 20) * circumference;
         circle.style.strokeDashoffset = offset;
         
         if (timeLeft <= 0) {
@@ -298,3 +298,4 @@ function restartGame() {
 
 // تهيئة
 createStars();
+
