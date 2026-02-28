@@ -63,44 +63,52 @@
 
         <!-- شاشة الأسئلة -->
         <div class="screen" id="questionScreen">
-            <div class="card">
+            <!-- هيدر السؤال -->
+            <div class="question-header">
                 <button class="btn-back" onclick="goBackToHome()" title="العودة للرئيسية">
                     <span class="btn-back-icon">🏠</span>
                     <span class="btn-back-text">الرئيسية</span>
                 </button>
                 <div class="question-counter" id="questionCounter"></div>
-                <div class="question-box">
-                    <div class="question-text" id="questionText"></div>
-                    
-                    <div class="timer-container">
-                        <svg class="timer-circle" viewBox="0 0 200 200">
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#f7c548;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle class="timer-bg" cx="100" cy="100" r="90"></circle>
-                            <circle class="timer-progress" cx="100" cy="100" r="90" 
-                                    stroke-dasharray="565.48" 
-                                    stroke-dashoffset="0"
-                                    id="timerCircle"></circle>
-                        </svg>
-                        <div class="timer-text" id="timerText">40</div>
-                    </div>
-
-                    <div class="answer-box" id="answerBox">
-                        <div class="answer-text" id="answerText"></div>
-                    </div>
+                <!-- مؤقت بسيط inline -->
+                <div class="timer-inline">
+                    <svg class="timer-ring" viewBox="0 0 60 60">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f7c548;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="timer-ring-bg" cx="30" cy="30" r="25"></circle>
+                        <circle class="timer-ring-progress" cx="30" cy="30" r="25"
+                                stroke-dasharray="157.08"
+                                stroke-dashoffset="0"
+                                id="timerCircle"></circle>
+                    </svg>
+                    <span class="timer-num" id="timerText">40</span>
                 </div>
-
-                <div class="player-selection" id="playerSelection" style="display: none;">
-                    <h3 style="text-align: center; color: var(--secondary); margin-bottom: 15px;">من أجاب أولاً؟</h3>
-                    <div class="player-grid" id="playerGrid"></div>
-                </div>
-
-                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" style="display: none;">السؤال التالي</button>
             </div>
+
+            <!-- كارد السؤال -->
+            <div class="card question-card">
+                <div class="question-text" id="questionText"></div>
+            </div>
+
+            <!-- كارد الإجابة -->
+            <div class="answer-card-wrapper" id="answerBox">
+                <div class="answer-card">
+                    <div class="answer-label">✅ الإجابة الصحيحة</div>
+                    <div class="answer-text" id="answerText"></div>
+                </div>
+            </div>
+
+            <!-- اختيار اللاعب -->
+            <div class="player-selection-card" id="playerSelection" style="display: none;">
+                <h3>من أجاب أولاً؟</h3>
+                <div class="player-grid" id="playerGrid"></div>
+            </div>
+
+            <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" style="display: none;">السؤال التالي ←</button>
         </div>
 
         <!-- شاشة النتائج -->
