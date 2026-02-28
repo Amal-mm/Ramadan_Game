@@ -11,11 +11,6 @@
     <div class="stars" id="stars"></div>
     <div class="islamic-pattern"></div>
 
-   <!-- Theme Switcher Floating Top -->
-
-    
-</div>
-
     <div class="container">
         <!-- الشاشة الرئيسية -->
         <div class="screen active" id="homeScreen">
@@ -29,15 +24,23 @@
 
         <!-- شاشة إدخال الأسماء -->
         <div class="screen" id="playersScreen">
-            <div class="card">
-                <h2>أسماء اللاعبين</h2>
-                <div class="input-group">
-                    <label>أدخل اسم اللاعب</label>
-                    <input type="text" id="playerInput" placeholder="اكتب الاسم هنا..." onkeypress="if(event.key==='Enter') addPlayer()">
+            <div class="card players-card">
+                <div class="players-header">
+                    <div class="players-icon">👥</div>
+                    <h2>أسماء اللاعبين</h2>
+                    <p class="players-subtitle">أضف من لاعب واحد إلى ما تشاء</p>
                 </div>
-                <button class="btn btn-secondary" onclick="addPlayer()">إضافة لاعب</button>
+                <div class="add-player-row">
+                    <input type="text" id="playerInput" placeholder="اكتب اسم اللاعب..." onkeypress="if(event.key==='Enter') addPlayer()">
+                    <button class="add-btn" onclick="addPlayer()">
+                        <span class="add-btn-icon">+</span>
+                        <span>إضافة</span>
+                    </button>
+                </div>
                 <div class="players-list" id="playersList"></div>
-                <button class="btn btn-primary" onclick="goToDifficulty()" id="continueBtn" style="display: none;">متابعة</button>
+                <button class="btn btn-primary continue-btn" onclick="goToDifficulty()" id="continueBtn" style="display: none;">
+                    متابعة ←
+                </button>
             </div>
         </div>
 
@@ -46,15 +49,9 @@
             <div class="card">
                 <h2>اختر مستوى الصعوبة</h2>
                 <div class="difficulty-options">
-                    <button class="difficulty-btn" onclick="selectDifficulty('easy')">
-                        😊<br>سهل
-                    </button>
-                    <button class="difficulty-btn" onclick="selectDifficulty('medium')">
-                        🤔<br>متوسط
-                    </button>
-                    <button class="difficulty-btn" onclick="selectDifficulty('hard')">
-                        🔥<br>صعب
-                    </button>
+                    <button class="difficulty-btn" onclick="selectDifficulty('easy')">😊<br>سهل</button>
+                    <button class="difficulty-btn" onclick="selectDifficulty('medium')">🤔<br>متوسط</button>
+                    <button class="difficulty-btn" onclick="selectDifficulty('hard')">🔥<br>صعب</button>
                 </div>
                 <button class="btn btn-primary" onclick="startGame()" id="startGameBtn" style="display: none;">ابدأ الأسئلة</button>
                 <button class="btn btn-secondary" onclick="goBackToPlayers()">رجوع لإضافة لاعبين</button>
@@ -63,14 +60,13 @@
 
         <!-- شاشة الأسئلة -->
         <div class="screen" id="questionScreen">
-            <!-- هيدر السؤال -->
+            <!-- هيدر -->
             <div class="question-header">
-                <button class="btn-back" onclick="goBackToHome()" title="العودة للرئيسية">
+                <button class="btn-back" onclick="goBackToHome()">
                     <span class="btn-back-icon">🏠</span>
                     <span class="btn-back-text">الرئيسية</span>
                 </button>
                 <div class="question-counter" id="questionCounter"></div>
-                <!-- مؤقت بسيط inline -->
                 <div class="timer-inline">
                     <svg class="timer-ring" viewBox="0 0 60 60">
                         <defs>
@@ -81,11 +77,10 @@
                         </defs>
                         <circle class="timer-ring-bg" cx="30" cy="30" r="25"></circle>
                         <circle class="timer-ring-progress" cx="30" cy="30" r="25"
-                                stroke-dasharray="157.08"
-                                stroke-dashoffset="0"
+                                stroke-dasharray="157.08" stroke-dashoffset="0"
                                 id="timerCircle"></circle>
                     </svg>
-                    <span class="timer-num" id="timerText">40</span>
+                    <span class="timer-num" id="timerText">30</span>
                 </div>
             </div>
 
@@ -94,12 +89,12 @@
                 <div class="question-text" id="questionText"></div>
             </div>
 
-            <!-- كارد الإجابة -->
-            <div class="answer-card-wrapper" id="answerBox">
-                <div class="answer-card">
-                    <div class="answer-label">✅ الإجابة الصحيحة</div>
-                    <div class="answer-text" id="answerText"></div>
-                </div>
+            <!-- خيارات الإجابة -->
+            <div class="options-grid" id="optionsGrid"></div>
+
+            <!-- نتيجة الإجابة -->
+            <div class="answer-result" id="answerResult" style="display:none;">
+                <div class="answer-result-inner" id="answerResultInner"></div>
             </div>
 
             <!-- اختيار اللاعب -->
@@ -120,12 +115,10 @@
                     <div class="winner-name" id="winnerName"></div>
                     <p class="subtitle" id="winnerScore"></p>
                 </div>
-
                 <div class="scoreboard">
                     <h3 style="text-align: center; color: var(--secondary); margin-bottom: 20px;">لوحة النتائج</h3>
                     <div id="finalScores"></div>
                 </div>
-
                 <button class="btn btn-primary" onclick="restartGame()">العب مرة أخرى</button>
             </div>
         </div>
@@ -133,7 +126,5 @@
 
     <script src="script.js"></script>
 </body>
-<footer class="footer">
-     2026 HOPE ©
-</footer>
+<footer class="footer">2026 HOPE ©</footer>
 </html>
