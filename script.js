@@ -175,12 +175,13 @@ function displayQuestion() {
 
 // المؤقت
 function startTimer() {
-    timeLeft = 20;
+    timeLeft = 15;
     const circle = document.getElementById('timerCircle');
     const timerText = document.getElementById('timerText');
-    const circumference = 2 * Math.PI * 90;
+    const circumference = 2 * Math.PI * 25; // r=25 للدائرة الصغيرة
     
     timerText.textContent = timeLeft;
+    circle.style.strokeDasharray = circumference;
     circle.style.strokeDashoffset = '0';
     
     clearInterval(timerInterval);
@@ -188,7 +189,7 @@ function startTimer() {
         timeLeft--;
         timerText.textContent = timeLeft;
         
-        const offset = circumference - (timeLeft / 20) * circumference;
+        const offset = circumference - (timeLeft / 15) * circumference;
         circle.style.strokeDashoffset = offset;
         
         if (timeLeft <= 0) {
@@ -298,4 +299,3 @@ function restartGame() {
 
 // تهيئة
 createStars();
-
